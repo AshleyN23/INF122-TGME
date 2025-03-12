@@ -2,7 +2,7 @@ package TGME.Board;
 
 public class CCNormalPiece extends Piece{
 
-    public CCNormalPiece(String n, String c, int[][] p, Board b) {
+    public CCNormalPiece(String n, String c, int[] p, Board b) {
         super(n, c, p, b);
     }
 

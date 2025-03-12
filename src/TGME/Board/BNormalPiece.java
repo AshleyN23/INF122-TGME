@@ -2,7 +2,7 @@ package TGME.Board;
 
 public class BNormalPiece extends Piece {
 
-    public BNormalPiece(String n, String c, int[][] p, Board b) {
+    public BNormalPiece(String n, String c, int[] p, Board b) {
         super(n, c, p, b);
     }
 

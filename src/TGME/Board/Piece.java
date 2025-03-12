@@ -3,7 +3,7 @@ package TGME.Board;
 public abstract class Piece {
     private String name;
     private String color;
-    private int[][] position;
+    private int[] position;
     private int value;
     private Board board;
     public Piece leftNeighbor;
@@ -11,10 +11,10 @@ public abstract class Piece {
     public Piece upNeighbor;
     public Piece downNeighbor;
 
-    public Piece(String n, String c, int[][] p, Board b) {
+    public Piece(String n, String c, int[] p, Board b) {
         name = n;
         color = c;
-        position = p;
+        position = p; //ex. [1, 2] 
         board = b;
     }
 
