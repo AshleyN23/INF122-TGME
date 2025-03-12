@@ -47,11 +47,11 @@ public class TGME {
     }
 
     public Player login (String userID) {
-        return new Player();
+        return new Player("", "");
     }
 
     public Player logout (String userID) {
-        return new Player();
+        return new Player("", "");
     }
 }
 

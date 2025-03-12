@@ -10,7 +10,7 @@ public class CCPowerPiece extends Piece {
     public CCPowerPiece(String n, String c, int[][] p, Board b, String desc) {
         super(n, c, p, b);
         description = desc;
-        skills = ArrayList<String>();
+        skills = new ArrayList<String>();
     }
 
     public void destroyPiecesInRow() {
