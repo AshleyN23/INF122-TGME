@@ -7,6 +7,7 @@ public abstract class SwipingGame {
         score = 0;
     }
 
+    // call updateBoard(moveType)
     public void swipeLeft() {
         return;
     }
