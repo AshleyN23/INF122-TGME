@@ -25,12 +25,14 @@ public class TGME {
         currentPlayers = current;
         numCurPlayers = currentNum;
     }
-    
+
     public void addGame(Game game) {
+        this.games.add(game);
         return;
     }
 
     public void addPlayer(Player player) {
+        this.players.add(player);
         return;
     }
 
@@ -43,15 +45,31 @@ public class TGME {
     }
 
     public void displayGames() {
+        System.out.println("PLEASE SELECT A GAME");
+        for (int i = 0; i < this.games.size(); i++) {
+            System.out.println(i + ": " + this.games.get(i).toString());
+        }
         return;
     }
 
-    public Player login (String userID) {
-        return new Player("", "");
+    public Player login(String userID) {
+        Player newUser = new Player(userID, "");
+        this.currentPlayers.add(newUser);
+        this.numCurPlayers += 1;
+
+        return newUser;
     }
 
-    public Player logout (String userID) {
-        return new Player("", "");
+    public Player logout(String userID) {
+        Player player = null;
+        for (int i = 0; i < this.numCurPlayers; i++) {
+            player = this.currentPlayers.get(i);
+            if (userID.equals(player.getUserName())) {
+                this.currentPlayers.remove(i);
+                this.numCurPlayers -= 1;
+                break;
+            }
+        }
+        return player;
     }
 }
-
