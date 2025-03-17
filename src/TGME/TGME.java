@@ -53,11 +53,17 @@ public class TGME {
     }
 
     public Player login(String userID) {
-        Player newUser = new Player(userID, "");
-        this.currentPlayers.add(newUser);
-        this.numCurPlayers += 1;
+        Player player = null;
+        for (int i = 0; i < this.numCurPlayers; i++) {
+            player = this.currentPlayers.get(i);
+            if (userID.equals(player.getUserName())) {
+                this.currentPlayers.add(player);
+                this.numCurPlayers += 1;
+                break;
+            }
+        }
 
-        return newUser;
+        return player;
     }
 
     public Player logout(String userID) {
