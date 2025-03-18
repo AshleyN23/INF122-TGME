@@ -15,7 +15,7 @@ public class Game {
         gameName = name;
         maxMoves = maxMove;
         maxTime = time;
-        board = null;
+        board = null; // pass in the type of game into the board
     }
 
     public void addGame(Game game) {

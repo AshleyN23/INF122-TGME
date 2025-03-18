@@ -2,20 +2,8 @@ package TGME.Board;
 
 public class BNormalPiece extends Piece {
 
-    public BNormalPiece(String n, String c, int[] p, Board b) {
-        super(n, c, p, b);
+    public BNormalPiece(String n, String c, int[] p, int v) {
+        super(n, c, p, v);
     }
 
-    public void is3InRow() {
-        return;
-    }
-
-    private void destroyPiecesVertical() {
-        return;
-    }
-
-    private void destroyPiecesHorizont() {
-        return;
-    }
-    
 }

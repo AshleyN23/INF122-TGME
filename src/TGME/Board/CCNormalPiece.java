@@ -2,8 +2,8 @@ package TGME.Board;
 
 public class CCNormalPiece extends Piece{
 
-    public CCNormalPiece(String n, String c, int[] p, Board b) {
-        super(n, c, p, b);
+    public CCNormalPiece(String n, String c, int[] p, int v) {
+        super(n, c, p, v);
     }
 
     public void is4InRow() {

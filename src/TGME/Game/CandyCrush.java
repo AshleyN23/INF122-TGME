@@ -15,6 +15,7 @@ public class CandyCrush extends Game {
         movesLeft = maxMove;
         candyTypes = new ArrayList<Piece>();
         // Add Gem types here
+        // update 3/17 added some gem types in the board class
     }
 
     private void doesMatchMore() {
