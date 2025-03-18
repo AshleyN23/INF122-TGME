@@ -36,11 +36,13 @@ public class TGME {
         return;
     }
 
-    public void startGame(Game game) {
+    public void startSelectedGame(Game game) {
+        game.startGame();
         return;
     }
 
-    public void endGame(Game game) {
+    public void endProgram() {
+        System.exit(0);
         return;
     }
 
