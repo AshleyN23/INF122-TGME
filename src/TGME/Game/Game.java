@@ -1,11 +1,9 @@
 package TGME.Game;
 
+import TGME.Board.Board;
 import java.sql.Time;
 
-import TGME.Player;
-import TGME.Board.Board;
-
-public class Game {
+public abstract class Game {
     private String gameName;
     private int maxMoves;
     private Time maxTime;
@@ -15,22 +13,25 @@ public class Game {
         gameName = name;
         maxMoves = maxMove;
         maxTime = time;
-        board = null; // pass in the type of game into the board
+        board = null;
     }
 
-    public void addGame(Game game) {
-        return;
-    }
+    // public void addGame(Game game) {
+    //     return;
+    // }
 
-    public void addPlayer(Player player) {
-        return;
-    }
+    // public void addPlayer(Player player) {
+    //     return;
+    // }
+    
 
-    public void startGame(Game game) {
-        return;
-    }
+    // public void startGame(Game game) {
+    //     return;
+    // }
+    
+    public abstract void startGame();
 
     public String getGameName() {
-        return "";
+        return this.gameName;
     }
 }

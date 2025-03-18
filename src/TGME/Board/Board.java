@@ -1,6 +1,5 @@
 package TGME.Board;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Board {
@@ -179,6 +178,14 @@ public class Board {
 
 
         return;
+    }
+
+    public int getNumOfRow() {
+        return numOfRow;
+    }
+
+    public int getNumOfCol() {
+        return numOfCol;
     }
 
 }
