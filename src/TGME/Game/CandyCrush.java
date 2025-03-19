@@ -21,41 +21,43 @@ public class CandyCrush extends SwipingGame { // extends SwipingGame???
         startGame();
     }
 
-    void updateBoard(int col, int row) {
+    public int updateBoard(int col, int row) {
+        int score = 0;
         if (movesLeft <= 0) {
             System.out.println("No more moves left!");
-            return;
+            return score;
         }
 
         movesLeft--;
 
         System.out.println("Updating board after swipe...");
-        board.updateBoard(col, row); // update the board after a swipe
+        score += super.board.updateBoard(col, row); // update the board after a swipe
 
         if (reachedTargetScore()) {
             System.out.println("You won!");
         }
+        return score;
     }
 
     public int startGame() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("GAME START!!\n Swipe two pieces by typing what piece you want to switch and in what direction.\n Ex. 1 2 Down, Swaps the piece at row 1 column 2 with the piece below.");
         while (movesLeft != 0) {
+            System.out.println("Your Score: " + super.score);
             super.board.printBoard();
+            System.out.println("Next Move.");
             String[] playerMove = scanner.nextLine().split(" ");
             if (playerMove[2].equals("Down")) {
-                super.swipeDown(Integer.parseInt(playerMove[0]), Integer.parseInt(playerMove[1]));
+                super.score += super.swipeDown(Integer.parseInt(playerMove[0]) - 1, Integer.parseInt(playerMove[1]) - 1);
             } else if (playerMove[2].equals("Up")) {
-                super.swipeUp(Integer.parseInt(playerMove[0]), Integer.parseInt(playerMove[1]));
+                super.score += super.swipeUp(Integer.parseInt(playerMove[0]) - 1, Integer.parseInt(playerMove[1]) - 1);
             } else if (playerMove[2].equals("Left")) {
-                super.swipeLeft(Integer.parseInt(playerMove[0]), Integer.parseInt(playerMove[1]));
+                super.score += super.swipeLeft(Integer.parseInt(playerMove[0]) - 1, Integer.parseInt(playerMove[1]) - 1);
             } else if (playerMove[2].equals("Right")) {
-                super.swipeRight(Integer.parseInt(playerMove[0]), Integer.parseInt(playerMove[1]));
-            
+                super.score += super.swipeRight(Integer.parseInt(playerMove[0]) - 1, Integer.parseInt(playerMove[1]) - 1);        
             } else {
                 System.out.println("Invalid Input. Try Again.");
             }
-            // 
         }
         System.out.println("Out of Moves!");
         System.out.println("Your Score: " + super.score);

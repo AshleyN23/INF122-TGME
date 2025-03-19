@@ -14,39 +14,43 @@ public abstract class SwipingGame extends Game{
         this.board = board;
     }
 
-    abstract void updateBoard(int col, int row); //for subclasses to implement
+    abstract int updateBoard(int col, int row); //for subclasses to implement
 
     // call updateBoard(moveType)
-    public void swipeLeft(int row, int col) {
+    public int swipeLeft(int row, int col) {
         if (col > 0) 
         {  
             swapPieces(row, col, row, col - 1);
-            updateBoard(col - 1, row);
+            return updateBoard(col - 1, row);
         }
+        return 0;
     }
 
-    public void swipeRight(int row, int col) {
+    public int swipeRight(int row, int col) {
         if (col < board.getNumOfCol() - 1) 
         { 
             swapPieces(row, col, row, col + 1);
-            updateBoard(col + 1, row);
+            return updateBoard(col + 1, row);
         }
+        return 0;
     }
 
-    public void swipeUp(int row, int col) {
+    public int swipeUp(int row, int col) {
         if (row > 0) 
         {
             swapPieces(row, col, row - 1, col);
-            updateBoard(col, row - 1);
+            return updateBoard(col, row - 1);
         }
+        return 0;
     }
 
-    public void swipeDown(int row, int col) {
+    public int swipeDown(int row, int col) {
         if (row < board.getNumOfRow() - 1) 
         {  
             swapPieces(row, col, row + 1, col);
-            updateBoard(col, row + 1);
+            return updateBoard(col, row + 1);
         }
+        return 0;
     }
 
     private void swapPieces(int row1, int col1, int row2, int col2) {

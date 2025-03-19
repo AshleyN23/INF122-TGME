@@ -54,14 +54,15 @@ public class Board {
         layout = new Piece[this.numOfCol][this.numOfRow];  // reset the board to its original dimensions without pieces
     }
 
-    public void updateBoard(int col, int row) {
+    public int updateBoard(int col, int row) {
         // assuming that move has been validated
         Piece currentPiece = layout[col][row];
         ArrayList<ArrayList<Piece>> matches = findMatches(); // finds matches horizontally and vertically
+        int score = 0;
 
         while (matches.size() != 0){
             // remove the matching pieces
-            removeMatches(matches);
+            score += removeMatches(matches);
             // move pieces to fill new spots
             movePieces();
             // find new matches
@@ -70,6 +71,7 @@ public class Board {
 
         // refill board
         refillBoard();
+        return score;
     }
 
     public ArrayList<ArrayList<Piece>>  findMatches(){
@@ -124,14 +126,17 @@ public class Board {
         return matches;
     }
 
-    public void removeMatches(ArrayList<ArrayList<Piece>> matches){
+    public int removeMatches(ArrayList<ArrayList<Piece>> matches){
+        int score = 0;
         for (ArrayList<Piece> list : matches){
             for (Piece p : list){
                 int col = p.getPosition()[0];
                 int row = p.getPosition()[1];
                 layout[col][row] = null;
+                score += 200;
             }
         }
+        return score;
     }
 
     public void movePieces(){
