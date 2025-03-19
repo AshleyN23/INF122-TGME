@@ -77,7 +77,7 @@ public class Board {
     public ArrayList<ArrayList<Piece>>  findMatches(){
         ArrayList<ArrayList<Piece>> matches = new ArrayList<>();
 
-        for (int r = 0; r < numOfRow; r++){ // check horizontally
+        for (int r = 0; r < numOfRow - 1; r++){ // check horizontally
             ArrayList<Piece> temp = new ArrayList<>();
             temp.add(layout[r][0]);
             System.out.println("numOfCol" + numOfCol);
@@ -102,7 +102,7 @@ public class Board {
             }
         }
 
-        for (int c = 0; c < numOfCol; c++) { // check vertically
+        for (int c = 0; c < numOfCol - 1; c++) { // check vertically
             ArrayList<Piece> temp = new ArrayList<>();
             temp.add(layout[0][c]);
             for (int r = 0; r < numOfRow - 1; r++){
