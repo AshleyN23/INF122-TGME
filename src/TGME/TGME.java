@@ -36,8 +36,14 @@ public class TGME {
         return;
     }
 
-    public void startSelectedGame(Game game) {
-        game.startGame();
+    public void startSelectedGame(String gameName) {
+        for (int i = 0; i < this.games.size(); i++) {
+            Game game = this.games.get(i);
+            String gameString = game.getGameName();
+            if (gameString.equals(gameName)) {
+                game.startGame();
+            }
+        }
         return;
     }
 
@@ -49,7 +55,7 @@ public class TGME {
     public void displayGames() {
         System.out.println("PLEASE SELECT A GAME");
         for (int i = 0; i < this.games.size(); i++) {
-            System.out.println(i + ": " + this.games.get(i).toString());
+            System.out.println(i + ": " + this.games.get(i).getGameName());
         }
         return;
     }
@@ -61,10 +67,13 @@ public class TGME {
             if (userID.equals(player.getUserName())) {
                 this.currentPlayers.add(player);
                 this.numCurPlayers += 1;
-                break;
+                return player;
             }
         }
 
+        player = new Player(userID, null);
+        this.currentPlayers.add(player);
+        this.numCurPlayers += 1;
         return player;
     }
 
@@ -79,5 +88,9 @@ public class TGME {
             }
         }
         return player;
+    }
+
+    public ArrayList<Player> getCurrentPlayers() {
+        return this.currentPlayers;
     }
 }
