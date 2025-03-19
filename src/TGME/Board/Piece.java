@@ -14,8 +14,8 @@ public abstract class Piece {
         value = v;
     }
 
-    public void showPiece() {
-        return;
+    public char showPiece() {
+        return color.charAt(0);
     }
 
     public void updatePosition(int row, int col) {

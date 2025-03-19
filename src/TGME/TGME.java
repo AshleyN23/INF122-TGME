@@ -2,31 +2,37 @@ package TGME;
 
 import java.util.ArrayList;
 
+import TGME.Board.Board;
+import TGME.Game.Bejeweled;
+import TGME.Game.CandyCrush;
 import TGME.Game.Game;
+import java.util.Scanner;
 
 public class TGME {
-    ArrayList<Game> games;
+    ArrayList<String> games;
     ArrayList<Player> players;
     ArrayList<Player> currentPlayers;
     int numCurPlayers;
 
     public TGME() {
         // By default have no games and players
-        games = new ArrayList<Game>();
+        games = new ArrayList<String>();
         players = new ArrayList<Player>();
         currentPlayers = new ArrayList<Player>();
         numCurPlayers = 0;
+        TMGEStart();
     }
 
-    public TGME(ArrayList<Game> g, ArrayList<Player> players, ArrayList<Player> current, int currentNum) {
+    public TGME(ArrayList<String> g, ArrayList<Player> players, ArrayList<Player> current, int currentNum) {
         // Or can initialize with Games if already made
         this.games = g;
         this.players = players;
         currentPlayers = current;
         numCurPlayers = currentNum;
+        TMGEStart();
     }
 
-    public void addGame(Game game) {
+    public void addGame(String game) {
         this.games.add(game);
         return;
     }
@@ -36,15 +42,20 @@ public class TGME {
         return;
     }
 
-    public void startSelectedGame(String gameName) {
-        for (int i = 0; i < this.games.size(); i++) {
-            Game game = this.games.get(i);
-            String gameString = game.getGameName();
-            if (gameString.equals(gameName)) {
-                game.startGame();
-            }
+    public int startSelectedGame(String gameName, Player p) {
+        int score = 0;
+        if (gameName.equals("Bejeweled")) {
+            // int targetScore, Board board, int timeInSeconds, boolean timeMode, boolean multiplayerMode
+            Board b = new Board(8, 8, "Bejeweled");
+            Bejeweled g = new Bejeweled(2000, b, 5000, true, false);
+            score = g.startGame();
+        } else if (gameName.equals("Candy Crush")) {
+            // int maxMove, int targetScore, Board board
+            Board b = new Board(9, 9, "Candy Crush");
+            CandyCrush g = new CandyCrush(15, 2000, b);
+            score = g.startGame();
         }
-        return;
+        return score;
     }
 
     public void endProgram() {
@@ -55,7 +66,7 @@ public class TGME {
     public void displayGames() {
         System.out.println("PLEASE SELECT A GAME");
         for (int i = 0; i < this.games.size(); i++) {
-            System.out.println(i + ": " + this.games.get(i).getGameName());
+            System.out.println(i + ": " + this.games.get(i));
         }
         return;
     }
@@ -92,5 +103,57 @@ public class TGME {
 
     public ArrayList<Player> getCurrentPlayers() {
         return this.currentPlayers;
+    }
+
+    private void TMGEStart() {
+        Scanner scanner = new Scanner(System.in);
+        players.add(new Player("Mario", "Red"));
+        players.add(new Player("Luigi", "Blue"));
+        System.out.println("\nPLEASE SELECT PLAYER 1: ");
+        for (Player p : players) {
+            System.out.println(p.getUserName());
+        }
+        String p1name = scanner.nextLine();
+
+        System.out.println("PLEASE SELECT PLAYER 2 (if singleplayer type NONE): ");
+        for (Player p : players) {
+            if (!p.getUserName().equals(p1name))  {
+                System.out.println(p.getUserName());
+            }
+        }
+        String p2name = scanner.nextLine();
+
+        Player p1 = login(p1name);
+        Player p2 = null;
+        if (!p2name.equals("NONE")) {
+            p2 = login(p2name);
+        }
+
+        games.add("Bejeweled");
+        games.add("Candy Crush");
+        displayGames();
+
+        String gameSelected = scanner.nextLine();
+        System.out.println(p1name + " plays first!");
+        System.out.println("Press Enter to Start");
+        scanner.nextLine();
+        int p1Score = startSelectedGame(gameSelected, p1);
+        p1.updateHighScore(p1Score);
+
+        System.out.println(p2name + "'s Turn");
+        System.out.println("Press Enter to Start");
+        scanner.nextLine();
+        int p2Score = startSelectedGame(gameSelected, p2);
+        p2.updateHighScore(p2Score);
+
+        if (p1Score > p2Score){
+            System.out.println(p1name + " Wins!");
+        } else if (p1Score < p2Score) {
+            System.out.println(p2name + " Wins!");
+        } else {
+            System.out.println("Games Tied! Try Again.");
+        }
+        scanner.close();
+        endProgram();
     }
 }

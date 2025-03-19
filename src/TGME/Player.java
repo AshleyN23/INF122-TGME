@@ -53,7 +53,7 @@ public class Player {
         return this.userColor;
     }
 
-    public static void main(String[] args) {
-
+    public int getHighScore() {
+        return this.highScore;
     }
 }

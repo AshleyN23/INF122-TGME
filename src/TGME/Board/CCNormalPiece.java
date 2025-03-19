@@ -13,12 +13,4 @@ public class CCNormalPiece extends Piece{
     public void is3InRow() {
         return;
     }
-
-    private void destroyPiecesVertical() {
-        return;
-    }
-
-    private void destroyPiecesHorizont() {
-        return;
-    }
 }

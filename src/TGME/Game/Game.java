@@ -1,19 +1,14 @@
 package TGME.Game;
 
 import TGME.Board.Board;
-import java.sql.Time;
 
 public abstract class Game {
     private String gameName;
-    private int maxMoves;
-    private Time maxTime;
     private Board board;
 
-    public Game(String name, int maxMove, Time time) {
+    public Game(String name, Board board) {
         gameName = name;
-        maxMoves = maxMove;
-        maxTime = time;
-        board = null;
+        this.board = board;
     }
 
     // public void addGame(Game game) {
@@ -29,7 +24,7 @@ public abstract class Game {
     //     return;
     // }
     
-    public abstract void startGame();
+    public abstract int startGame();
 
     public String getGameName() {
         return this.gameName;

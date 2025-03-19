@@ -13,7 +13,42 @@ public class Board {
         numOfCol = col;
         layout = new Piece[col][row];
         this.game = game;
+        refillBoard();
+        updateBoard(0, 0);
     }
+
+    public Piece[][] getLayout() {
+        return layout;
+    }
+
+    public void printBoard() {
+        System.out.print("   ");
+        for (int col = 1; col <= layout[0].length; col++) {
+            System.out.print(col + " ");
+        }
+        System.out.println();
+
+        System.out.print("  -");
+        for (int col = 0; col < layout[0].length; col++) {
+            System.out.print("--");
+        }
+        System.out.println("-");
+
+        for (int row = 0; row < layout.length; row++) {
+            System.out.print((row + 1) + " |");
+            for (int col = 0; col < layout[row].length; col++) {
+                System.out.print(layout[row][col].showPiece() + " ");
+            }
+            System.out.println("|");
+        }
+
+        System.out.print("  -");
+        for (int col = 0; col < layout[0].length; col++) {
+            System.out.print("--");
+        }
+        System.out.println("-");
+    }
+
 
     public void resetBoard() {
         layout = new Piece[this.numOfCol][this.numOfRow];  // reset the board to its original dimensions without pieces
