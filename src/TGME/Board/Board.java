@@ -78,11 +78,14 @@ public class Board {
         for (int r = 0; r < numOfRow; r++){ // check horizontally
             ArrayList<Piece> temp = new ArrayList<>();
             temp.add(layout[r][0]);
-            for (int c = 0; c < numOfCol - 1; c++){
+            System.out.println("numOfCol" + numOfCol);
+
+            for (int c = 1; c < numOfCol - 1; c++){ // should this be numOfCol-1
+                System.out.println("current c" + c);
                 String currentPiece = layout[r][c].getName();
                 String nextPiece = layout[r][c + 1].getName();
-                if (currentPiece.equals(nextPiece)){
-                    temp.add(layout[r][c]);
+                if ((nextPiece != null && currentPiece != null) && currentPiece.equals(nextPiece)){
+                    temp.add(layout[r][c+1]);
                 }else{
                     if (temp.size() >= 3){
                         matches.add(temp);
@@ -103,7 +106,7 @@ public class Board {
             for (int r = 0; r < numOfRow - 1; r++){
                 String currentPiece = layout[r][c].getName();
                 String nextPiece = layout[r + 1][c].getName();
-                if (currentPiece.equals(nextPiece)){
+                if ((nextPiece != null && currentPiece != null) && currentPiece.equals(nextPiece)){
                     temp.add(layout[r][c]);
                 }else{
                     if (temp.size() >= 3){
