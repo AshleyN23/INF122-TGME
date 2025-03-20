@@ -29,4 +29,8 @@ public abstract class Piece {
     public int[] getPosition(){
         return this.position;
     }
+
+    public int getValue(){
+        return this.value;
+    }
 }

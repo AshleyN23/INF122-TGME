@@ -154,7 +154,7 @@ public class TGME {
             }
         } else {
             System.out.println(p1name + "'s Score: " + p1Score);
-            System.out.println("Target Score: 2000")
+            System.out.println("Target Score: 2000");
             if (p1Score >= 2000){
                 // Target Score
                 System.out.println(p1name + " Wins!");

@@ -8,6 +8,28 @@ public class Board {
     private Piece[][] layout;
     private String game;
 
+    Object[][] candyCrushPieceTypes = {
+        {"jelly bean", 1, "red"},
+        {"lozenge", 2, "orange"},
+        {"lemon drop", 3, "yellow"},
+        {"gum square", 4, "green"},
+        {"lollipop head", 5, "blue"},
+        {"jujube cluster", 6, "purple"},
+        {"striped candy", 7, "pink"},
+        {"wrapped candy", 8, "grey"},
+        {"color bomb", 9, "black"}
+    };
+
+    Object[][] bejeweledPieceTypes = {
+            {"red gem", 1, "red"},
+            {"orange gem", 2, "orange"},
+            {"yellow gem", 3, "yellow"},
+            {"green gem", 4, "green"},
+            {"blue gem", 5, "blue"},
+            {"purple gem", 6, "purple"},
+            {"white gem", 7, "white"}
+    };
+
     public Board(int row, int col, String game) {
         numOfRow = row;
         numOfCol = col;
@@ -79,7 +101,7 @@ public class Board {
     public ArrayList<ArrayList<Piece>>  findMatches(){
         ArrayList<ArrayList<Piece>> matches = new ArrayList<>();
 
-        for (int r = 0; r < numOfRow; r++){ // check vertically 
+        for (int r = 0; r < numOfRow - 1; r++){ // check horizontally
             ArrayList<Piece> temp = new ArrayList<>();
             temp.add(layout[r][0]);
 
@@ -102,7 +124,7 @@ public class Board {
             }
         }
 
-        for (int c = 0; c < numOfCol; c++) { // check horizontally
+        for (int c = 0; c < numOfCol - 1; c++) { // check vertically
             ArrayList<Piece> temp = new ArrayList<>();
             temp.add(layout[0][c]);
             for (int r = 0; r < numOfRow - 1; r++){
@@ -136,6 +158,49 @@ public class Board {
                 score += 200;
             }
         }
+        int val = matches.get(0).get(0).getValue(); // gets the value of the first matched piece
+        int r = matches.get(0).get(0).getPosition()[0]; // gets the row of the first matched piece
+        int c = matches.get(0).get(0).getPosition()[1]; // gets the column of the first matched piece
+        if (game.equals("Candy Crush")){
+            String name;
+            String color;
+            int[] pos;
+            int value;
+            if(val <= 8){ // this will get the info of the next stronger value piece
+                name = (String) candyCrushPieceTypes[val][0]; 
+                color = (String) candyCrushPieceTypes[val][2];
+                pos = new int[]{r, c};
+                value = (int) candyCrushPieceTypes[val][1];
+            }
+            else{ // it is the strongest piece, gets the information for itself
+                name = (String) candyCrushPieceTypes[val - 1][0]; 
+                color = (String) candyCrushPieceTypes[val - 1][2];
+                pos = new int[]{r, c};
+                value = (int) candyCrushPieceTypes[val - 1][1];
+            }
+            layout[r][c] = val < 7
+                ? new CCNormalPiece(name, color, pos, value)
+                : new CCPowerPiece(name, color, pos, value, "*");
+        }
+        if (game.equals("Bejeweled")){
+            String name;
+            String color;
+            int[] pos;
+            int value;
+            if(val <= 6){ // this will get the info of the next stronger value piece
+                name = (String) bejeweledPieceTypes[val][0]; 
+                color = (String) bejeweledPieceTypes[val][2];
+                pos = new int[]{r, c};
+                value = (int) bejeweledPieceTypes[val][1];
+            }
+            else{ // it is the strongest piece, gets the information for itself
+                name = (String) bejeweledPieceTypes[val - 1][0]; 
+                color = (String) bejeweledPieceTypes[val - 1][2];
+                pos = new int[]{r, c};
+                value = (int) bejeweledPieceTypes[val - 1][1];
+            }
+            layout[r][c] = new BNormalPiece(name, color, pos, value);
+        }
         return score;
     }
 
@@ -159,27 +224,27 @@ public class Board {
     }
 
     public void refillBoard() {
-        Object[][] candyCrushPieceTypes = {
-                {"jelly bean", 1, "red"},
-                {"lozenge", 2, "orange"},
-                {"lemon drop", 3, "yellow"},
-                {"gum square", 4, "green"},
-                {"lollipop head", 5, "blue"},
-                {"jujube cluster", 6, "purple"},
-                {"striped candy", 7, "pink"},
-                {"wrapped candy", 8, "grey"},
-                {"color bomb", 9, "black"}
-        };
+        // Object[][] candyCrushPieceTypes = {
+        //         {"jelly bean", 1, "red"},
+        //         {"lozenge", 2, "orange"},
+        //         {"lemon drop", 3, "yellow"},
+        //         {"gum square", 4, "green"},
+        //         {"lollipop head", 5, "blue"},
+        //         {"jujube cluster", 6, "purple"},
+        //         {"striped candy", 7, "pink"},
+        //         {"wrapped candy", 8, "grey"},
+        //         {"color bomb", 9, "black"}
+        // };
 
-        Object[][] bejeweledPieceTypes = {
-                {"red gem", 1, "red"},
-                {"orange gem", 2, "orange"},
-                {"yellow gem", 3, "yellow"},
-                {"green gem", 4, "green"},
-                {"blue gem", 5, "blue"},
-                {"purple gem", 6, "purple"},
-                {"white gem", 7, "white"}
-        };
+        // Object[][] bejeweledPieceTypes = {
+        //         {"red gem", 1, "red"},
+        //         {"orange gem", 2, "orange"},
+        //         {"yellow gem", 3, "yellow"},
+        //         {"green gem", 4, "green"},
+        //         {"blue gem", 5, "blue"},
+        //         {"purple gem", 6, "purple"},
+        //         {"white gem", 7, "white"}
+        // };
 
 
         if (game.equals("Candy Crush")){
