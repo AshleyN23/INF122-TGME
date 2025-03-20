@@ -1,6 +1,5 @@
 package TGME.Board;
 
-import java.util.ArrayList;
 
 public class CCPowerPiece extends Piece {
 
@@ -11,13 +10,13 @@ public class CCPowerPiece extends Piece {
         description = desc;
     }
 
-    private void destroyPiecesVertical() {
-        return;
-    }
+    // private void destroyPiecesVertical() {
+    //     return;
+    // }
 
-    private void destroyPiecesHorizont() {
-        return;
-    }
+    // private void destroyPiecesHorizont() {
+    //     return;
+    // }
 
     
 }

@@ -15,9 +15,9 @@ public class Board {
         {"gum square", 4, "green"},
         {"lollipop head", 5, "blue"},
         {"jujube cluster", 6, "purple"},
-        {"striped candy", 7, "pink"},
-        {"wrapped candy", 8, "grey"},
-        {"color bomb", 9, "black"}
+        {"striped candy", 7, "magenta"},
+        {"wrapped candy", 8, "violet"},
+        {"color bomb", 9, "turquoise"}
     };
 
     Object[][] bejeweledPieceTypes = {
@@ -115,7 +115,6 @@ public class Board {
                     }
                 }
                 if (temp.size() >= 3) {
-                    System.out.println(temp);
                     matches.add(temp);
                 }
             }}
@@ -134,7 +133,6 @@ public class Board {
                     }
                 }
                 if (temp.size() >= 3) {
-                    System.out.println(temp);
                     matches.add(temp);
                 }
             }
@@ -230,10 +228,7 @@ public class Board {
                         int value = (int) candyCrushPieceTypes[index][1];
                         int[] pos = new int[]{r, c};
                         String color = (String) candyCrushPieceTypes[index][2];
-
-                        layout[r][c] = index < 7
-                                ? new CCNormalPiece(name, color, pos, value)
-                                : new CCPowerPiece(name, color, pos, value, "test desc");
+                        layout[r][c] = new CCNormalPiece(name, color, pos, value);
                     }
                 }
             }

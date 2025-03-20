@@ -52,7 +52,7 @@ public class Bejeweled extends SwipingGame{ //initally extends Game
             super.board.printBoard();
             System.out.println("Next Move.");
             String[] playerMove = scanner.nextLine().toLowerCase().split(" ");
-            if (playerMove[0].equals("End")) {
+            if (playerMove[0].equals("end")) {
                 break;
             } else if (playerMove[2].equals("down")) {
                 super.score += super.swipeDown(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);

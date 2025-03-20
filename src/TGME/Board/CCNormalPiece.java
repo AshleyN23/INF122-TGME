@@ -6,11 +6,11 @@ public class CCNormalPiece extends Piece{
         super(n, c, p, v);
     }
 
-    public void is4InRow() {
-        return;
-    }
+    // public void is4InRow() {
+    //     return;
+    // }
 
-    public void is3InRow() {
-        return;
-    }
+    // public void is3InRow() {
+    //     return;
+    // }
 }
