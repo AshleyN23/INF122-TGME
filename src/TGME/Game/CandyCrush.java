@@ -34,7 +34,7 @@ public class CandyCrush extends SwipingGame { // extends SwipingGame???
             System.out.println("Moves Left: " + movesLeft);
             super.board.printBoard();
             System.out.println("Next Move.");
-            String[] playerMove = scanner.nextLine().split(" ");
+            String[] playerMove = scanner.nextLine().toLowerCase().split(" ");
             if (playerMove[0].equals("End")) {
                 break;
             } else if (playerMove[2].toLowerCase().equals("down")) {
