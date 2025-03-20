@@ -4,15 +4,14 @@ import TGME.Board.Board;
 import TGME.Board.Piece;
 
 public abstract class SwipingGame extends Game{
-    int score, targetScore;
+    int score;
     Board board;
     int movesLeft;
 
-    public SwipingGame(Board board, int targetScore , String name) {
+    public SwipingGame(Board board, String name) {
         super(name, board);
         this.score = 0;
         this.board = board;
-        this.targetScore = targetScore;
     }
 
     abstract int updateBoard(int col, int row); //for subclasses to implement

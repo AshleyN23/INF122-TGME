@@ -6,10 +6,9 @@ import TGME.Board.Board;
 public class CandyCrush extends SwipingGame { // extends SwipingGame??? 
 
     int movesLeft;
-    int score, targetScore;
     
     public CandyCrush(int maxMove, int targetScore, Board board) {
-        super(board, targetScore, "Candy Crush");
+        super(board, "Candy Crush");
         this.movesLeft = maxMove;
     }
 

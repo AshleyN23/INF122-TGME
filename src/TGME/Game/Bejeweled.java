@@ -12,7 +12,7 @@ public class Bejeweled extends SwipingGame{ //initally extends Game
     private boolean gameStart;
    
     public Bejeweled( int targetScore, Board board, int timeInSeconds, boolean timeMode) {
-        super(board, targetScore, "Bejeweled");
+        super(board, "Bejeweled");
         this.timeMode = timeMode;
 
         if (timeMode) {
@@ -39,15 +39,6 @@ public class Bejeweled extends SwipingGame{ //initally extends Game
         int score = 0;
         System.out.println("Updating board after swipe...");
         score += super.board.updateBoard(col, row); // Calls Board’s update logic
-
-
-        if (super.score >= targetScore) {
-            System.out.println("You won!");
-            if (timeMode) {
-                timer.cancel();  // Stop the timer if the player wins early
-                gameStart = false;
-            }
-        }
         return score;
     }
 
@@ -59,7 +50,6 @@ public class Bejeweled extends SwipingGame{ //initally extends Game
         }
         while (gameStart) {
             System.out.println("Your Score: " + super.score);
-            System.out.println("Target: " + super.targetScore);
             super.board.printBoard();
             System.out.println("Next Move.");
             String[] playerMove = scanner.nextLine().split(" ");

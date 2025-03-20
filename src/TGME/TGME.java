@@ -46,10 +46,12 @@ public class TGME {
         if (gameName.equals("Bejeweled")) {
             Board b = new Board(8, 8, "Bejeweled");
             Bejeweled g = new Bejeweled(1000, b, 30, true);
+            p.changeCurrentGame(g);
             score = g.startGame();
         } else if (gameName.equals("Candy Crush")) {
             Board b = new Board(9, 9, "Candy Crush");
             CandyCrush g = new CandyCrush(10, 2000, b);
+            p.changeCurrentGame(g);
             score = g.startGame();
         }
         return score;
