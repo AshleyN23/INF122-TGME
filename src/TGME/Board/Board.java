@@ -65,6 +65,8 @@ public class Board {
             score += removeMatches(matches);
             // move pieces to fill new spots
             movePieces();
+            // refill blank spots
+            refillBoard();
             // find new matches
             matches = findMatches();
         }
@@ -80,10 +82,8 @@ public class Board {
         for (int r = 0; r < numOfRow - 1; r++){ // check horizontally
             ArrayList<Piece> temp = new ArrayList<>();
             temp.add(layout[r][0]);
-            System.out.println("numOfCol" + numOfCol);
 
             for (int c = 1; c < numOfCol - 1; c++){ // should this be numOfCol-1
-                System.out.println("current c" + c);
                 String currentPiece = layout[r][c].getName();
                 String nextPiece = layout[r][c + 1].getName();
                 if ((nextPiece != null && currentPiece != null) && currentPiece.equals(nextPiece)){

@@ -135,14 +135,10 @@ public class TGME {
 
         String gameSelected = scanner.nextLine();
         System.out.println(p1name + " plays first!");
-        System.out.println("Press Enter to Start");
-        scanner.nextLine();
         int p1Score = startSelectedGame(gameSelected, p1);
         p1.updateHighScore(p1Score);
 
         System.out.println(p2name + "'s Turn");
-        System.out.println("Press Enter to Start");
-        scanner.nextLine();
         int p2Score = startSelectedGame(gameSelected, p2);
         p2.updateHighScore(p2Score);
 

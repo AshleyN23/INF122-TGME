@@ -12,6 +12,7 @@ public abstract class SwipingGame extends Game{
         super(name, board);
         this.score = 0;
         this.board = board;
+        this.targetScore = targetScore;
     }
 
     abstract int updateBoard(int col, int row); //for subclasses to implement
@@ -20,8 +21,8 @@ public abstract class SwipingGame extends Game{
     public int swipeLeft(int row, int col) {
         if (col > 0) 
         {  
-            swapPieces(row, col, row, col - 1);
-            return updateBoard(col - 1, row);
+            swapPieces(row, col, row - 1, col);
+            return updateBoard(col, row - 1);
         }
         return 0;
     }
@@ -29,8 +30,8 @@ public abstract class SwipingGame extends Game{
     public int swipeRight(int row, int col) {
         if (col < board.getNumOfCol() - 1) 
         { 
-            swapPieces(row, col, row, col + 1);
-            return updateBoard(col + 1, row);
+            swapPieces(row, col, row + 1, col);
+            return updateBoard(col, row + 1);
         }
         return 0;
     }
@@ -38,8 +39,8 @@ public abstract class SwipingGame extends Game{
     public int swipeUp(int row, int col) {
         if (row > 0) 
         {
-            swapPieces(row, col, row - 1, col);
-            return updateBoard(col, row - 1);
+            swapPieces(row, col, row, col - 1);
+            return updateBoard(col - 1, row);
         }
         return 0;
     }
@@ -47,8 +48,8 @@ public abstract class SwipingGame extends Game{
     public int swipeDown(int row, int col) {
         if (row < board.getNumOfRow() - 1) 
         {  
-            swapPieces(row, col, row + 1, col);
-            return updateBoard(col, row + 1);
+            swapPieces(row, col, row, col + 1);
+            return updateBoard(col + 1, row);
         }
         return 0;
     }
