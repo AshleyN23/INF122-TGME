@@ -1,10 +1,9 @@
 package TGME.Game;
 
+import TGME.Board.Board;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import TGME.Board.Board;
 
 public class Bejeweled extends SwipingGame{ //initally extends Game
     private Timer timer;
@@ -52,16 +51,16 @@ public class Bejeweled extends SwipingGame{ //initally extends Game
             System.out.println("Your Score: " + super.score);
             super.board.printBoard();
             System.out.println("Next Move.");
-            String[] playerMove = scanner.nextLine().split(" ");
+            String[] playerMove = scanner.nextLine().toLowerCase().split(" ");
             if (playerMove[0].equals("End")) {
                 break;
-            } else if (playerMove[2].equals("Down")) {
+            } else if (playerMove[2].equals("down")) {
                 super.score += super.swipeDown(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);
-            } else if (playerMove[2].equals("Up")) {
+            } else if (playerMove[2].equals("up")) {
                 super.score += super.swipeUp(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);
-            } else if (playerMove[2].equals("Left")) {
+            } else if (playerMove[2].equals("left")) {
                 super.score += super.swipeLeft(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);
-            } else if (playerMove[2].equals("Right")) {
+            } else if (playerMove[2].equals("right")) {
                 super.score += super.swipeRight(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);        
             } else {
                 System.out.println("Invalid Input. Try Again.");

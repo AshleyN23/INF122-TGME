@@ -113,6 +113,10 @@ public class Board {
                 }else{
                     if (temp.size() >= 3){
                         matches.add(temp);
+                        // temp.add(layout[r][c]);
+                        // for(int t = 0; t < temp.size(); t++){
+                        //     System.out.println("temp: " + temp.get(t).getName());
+                        // }
                     }
                     temp = new ArrayList<>();
                     temp.add(layout[r][c]);
@@ -224,27 +228,6 @@ public class Board {
     }
 
     public void refillBoard() {
-        // Object[][] candyCrushPieceTypes = {
-        //         {"jelly bean", 1, "red"},
-        //         {"lozenge", 2, "orange"},
-        //         {"lemon drop", 3, "yellow"},
-        //         {"gum square", 4, "green"},
-        //         {"lollipop head", 5, "blue"},
-        //         {"jujube cluster", 6, "purple"},
-        //         {"striped candy", 7, "pink"},
-        //         {"wrapped candy", 8, "grey"},
-        //         {"color bomb", 9, "black"}
-        // };
-
-        // Object[][] bejeweledPieceTypes = {
-        //         {"red gem", 1, "red"},
-        //         {"orange gem", 2, "orange"},
-        //         {"yellow gem", 3, "yellow"},
-        //         {"green gem", 4, "green"},
-        //         {"blue gem", 5, "blue"},
-        //         {"purple gem", 6, "purple"},
-        //         {"white gem", 7, "white"}
-        // };
 
 
         if (game.equals("Candy Crush")){
