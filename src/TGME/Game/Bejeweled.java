@@ -54,13 +54,13 @@ public class Bejeweled extends SwipingGame{ //initally extends Game
             String[] playerMove = scanner.nextLine().toLowerCase().split(" ");
             if (playerMove[0].equals("End")) {
                 break;
-            } else if (playerMove[2].equals("down")) {
+            } else if (playerMove[2].toLowerCase().equals("down")) {
                 super.score += super.swipeDown(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);
-            } else if (playerMove[2].equals("up")) {
+            } else if (playerMove[2].toLowerCase().equals("up")) {
                 super.score += super.swipeUp(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);
-            } else if (playerMove[2].equals("left")) {
+            } else if (playerMove[2].toLowerCase().equals("left")) {
                 super.score += super.swipeLeft(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);
-            } else if (playerMove[2].equals("right")) {
+            } else if (playerMove[2].toLowerCase().equals("right")) {
                 super.score += super.swipeRight(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);        
             } else {
                 System.out.println("Invalid Input. Try Again.");

@@ -18,7 +18,7 @@ public abstract class SwipingGame extends Game{
 
     // call updateBoard(moveType)
     public int swipeLeft(int row, int col) {
-        if (col > 0) 
+        if (col >= 0) 
         {  
             swapPieces(row, col, row - 1, col);
             return updateBoard(col, row - 1);
@@ -27,7 +27,7 @@ public abstract class SwipingGame extends Game{
     }
 
     public int swipeRight(int row, int col) {
-        if (col < board.getNumOfCol() - 1) 
+        if (col <= board.getNumOfCol() - 1) 
         { 
             swapPieces(row, col, row + 1, col);
             return updateBoard(col, row + 1);
@@ -36,7 +36,7 @@ public abstract class SwipingGame extends Game{
     }
 
     public int swipeUp(int row, int col) {
-        if (row > 0) 
+        if (row >= 0) 
         {
             swapPieces(row, col, row, col - 1);
             return updateBoard(col - 1, row);
@@ -45,7 +45,7 @@ public abstract class SwipingGame extends Game{
     }
 
     public int swipeDown(int row, int col) {
-        if (row < board.getNumOfRow() - 1) 
+        if (row <= board.getNumOfRow() - 1) 
         {  
             swapPieces(row, col, row, col + 1);
             return updateBoard(col + 1, row);

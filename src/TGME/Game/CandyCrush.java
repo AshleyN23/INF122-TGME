@@ -37,13 +37,13 @@ public class CandyCrush extends SwipingGame { // extends SwipingGame???
             String[] playerMove = scanner.nextLine().split(" ");
             if (playerMove[0].equals("End")) {
                 break;
-            } else if (playerMove[2].equals("Down")) {
+            } else if (playerMove[2].toLowerCase().equals("down")) {
                 super.score += super.swipeDown(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);
-            } else if (playerMove[2].equals("Up")) {
+            } else if (playerMove[2].toLowerCase().equals("up")) {
                 super.score += super.swipeUp(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);
-            } else if (playerMove[2].equals("Left")) {
+            } else if (playerMove[2].toLowerCase().equals("left")) {
                 super.score += super.swipeLeft(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);
-            } else if (playerMove[2].equals("Right")) {
+            } else if (playerMove[2].toLowerCase().equals("right")) {
                 super.score += super.swipeRight(Integer.parseInt(playerMove[1]) - 1, Integer.parseInt(playerMove[0]) - 1);        
             } else {
                 System.out.println("Invalid Input. Try Again.");
