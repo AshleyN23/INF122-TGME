@@ -134,20 +134,31 @@ public class TGME {
         System.out.println(p1name + " plays first!");
         int p1Score = startSelectedGame(gameSelected, p1);
         p1.updateHighScore(p1Score);
-
-        System.out.println(p2name + "'s Turn");
-        int p2Score = startSelectedGame(gameSelected, p2);
-        p2.updateHighScore(p2Score);
-
-        System.out.println(p1name + "'s Score: " + p1Score);
-        System.out.println(p2name + "'s Score: " + p2Score);
-
-        if (p1Score > p2Score){
-            System.out.println(p1name + " Wins!");
-        } else if (p1Score < p2Score) {
-            System.out.println(p2name + " Wins!");
+        
+        if (p2 != null) {
+            System.out.println(p2name + "'s Turn");
+            int p2Score = startSelectedGame(gameSelected, p2);
+            p2.updateHighScore(p2Score);
+    
+            System.out.println(p1name + "'s Score: " + p1Score);
+            System.out.println(p2name + "'s Score: " + p2Score);
+    
+            if (p1Score > p2Score){
+                System.out.println(p1name + " Wins!");
+            } else if (p1Score < p2Score) {
+                System.out.println(p2name + " Wins!");
+            } else {
+                System.out.println("Games Tied! Try Again.");
+            }
         } else {
-            System.out.println("Games Tied! Try Again.");
+            System.out.println(p1name + "'s Score: " + p1Score);
+            System.out.println("Target Score: 2000")
+            if (p1Score >= 2000){
+                // Target Score
+                System.out.println(p1name + " Wins!");
+            } else {
+                System.out.println(p1name + " did not reach target score.");
+            }
         }
         scanner.close();
         endProgram();
