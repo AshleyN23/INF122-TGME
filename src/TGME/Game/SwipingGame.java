@@ -61,21 +61,21 @@ public abstract class SwipingGame extends Game{
         layout[col2][row2] = temp;
     }
 
-    public void addPoints(int points) {
-        score += points;
-        System.out.println("Your score is now " + score + "!");
-        reachedTargetScore();
-    }
+    // public void addPoints(int points) {
+    //     score += points;
+    //     System.out.println("Your score is now " + score + "!");
+    //     reachedTargetScore();
+    // }
 
-    public boolean reachedTargetScore() {
-        if (score >= targetScore) {
-            System.out.println("You have reached the target score of " + targetScore + "!");
-        }
-        else {
-            System.out.println("Your score is now " + score + " and the target score is " + targetScore + ". Keep going!");
-        }
-        return score >= targetScore;
-    }
+    // public boolean reachedTargetScore() {
+    //     if (score >= targetScore) {
+    //         System.out.println("You have reached the target score of " + targetScore + "!");
+    //     }
+    //     else {
+    //         System.out.println("Your score is now " + score + " and the target score is " + targetScore + ". Keep going!");
+    //     }
+    //     return score >= targetScore;
+    // }
 
         //Handles logic in Board class alr
     // public void doesMatch(){

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import TGME.Board.Board;
 import TGME.Game.Bejeweled;
 import TGME.Game.CandyCrush;
-import TGME.Game.Game;
 import java.util.Scanner;
 
 public class TGME {
@@ -45,14 +44,12 @@ public class TGME {
     public int startSelectedGame(String gameName, Player p) {
         int score = 0;
         if (gameName.equals("Bejeweled")) {
-            // int targetScore, Board board, int timeInSeconds, boolean timeMode, boolean multiplayerMode
             Board b = new Board(8, 8, "Bejeweled");
-            Bejeweled g = new Bejeweled(2000, b, 5000, true, false);
+            Bejeweled g = new Bejeweled(1000, b, 30, true);
             score = g.startGame();
         } else if (gameName.equals("Candy Crush")) {
-            // int maxMove, int targetScore, Board board
             Board b = new Board(9, 9, "Candy Crush");
-            CandyCrush g = new CandyCrush(15, 2000, b);
+            CandyCrush g = new CandyCrush(10, 2000, b);
             score = g.startGame();
         }
         return score;
@@ -109,7 +106,7 @@ public class TGME {
         Scanner scanner = new Scanner(System.in);
         players.add(new Player("Mario", "Red"));
         players.add(new Player("Luigi", "Blue"));
-        System.out.println("\nPLEASE SELECT PLAYER 1: ");
+        System.out.println("PLEASE SELECT PLAYER 1: ");
         for (Player p : players) {
             System.out.println(p.getUserName());
         }
@@ -141,6 +138,9 @@ public class TGME {
         System.out.println(p2name + "'s Turn");
         int p2Score = startSelectedGame(gameSelected, p2);
         p2.updateHighScore(p2Score);
+
+        System.out.println(p1name + "'s Score: " + p1Score);
+        System.out.println(p2name + "'s Score: " + p2Score);
 
         if (p1Score > p2Score){
             System.out.println(p1name + " Wins!");
