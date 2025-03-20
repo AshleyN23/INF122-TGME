@@ -101,18 +101,14 @@ public class Board {
     public ArrayList<ArrayList<Piece>>  findMatches(){
         ArrayList<ArrayList<Piece>> matches = new ArrayList<>();
 
-        for (int r = 0; r < numOfRow - 1; r++){ // check horizontally
-            System.out.println("-------------------------");
+        for (int r = 0; r < numOfRow ; r++){ // check horizontally
             ArrayList<Piece> temp = new ArrayList<>();
-//            temp.add(layout[r][0]);
-            for (int c = 0; c < numOfCol - 2; c++) { // should this be numOfCol-1
+            for (int c = 0; c < numOfCol - 2; c++) {
                 String currentPiece = layout[r][c].getName();
                 String nextPiece = layout[r][c + 1].getName();
                 String thirdPiece = layout[r][c + 2].getName();
-                System.out.println(currentPiece + " vs "  + nextPiece + " vs " + thirdPiece);
                 if ((nextPiece != null && currentPiece != null) && currentPiece.equals(nextPiece)) {
-                    if ((nextPiece != null && thirdPiece != null) && nextPiece.equals(thirdPiece)) {
-                        System.out.println("here");
+                    if (nextPiece.equals(thirdPiece)) {
                         temp.add(layout[r][c]);
                         temp.add(layout[r][c + 1]);
                         temp.add(layout[r][c + 2]);
@@ -124,24 +120,23 @@ public class Board {
                 }
             }}
 
-        for (int c = 0; c < numOfCol - 1; c++) { // check vertically
+        for (int c = 0; c < numOfCol; c++) { // check vertically
             ArrayList<Piece> temp = new ArrayList<>();
-            temp.add(layout[0][c]);
-            for (int r = 0; r < numOfRow - 1; r++){
+            for (int r = 0; r < numOfRow - 2; r++){
                 String currentPiece = layout[r][c].getName();
                 String nextPiece = layout[r + 1][c].getName();
+                String thirdPiece = layout[r + 2][c].getName();
                 if ((nextPiece != null && currentPiece != null) && currentPiece.equals(nextPiece)){
-                    temp.add(layout[r][c]);
-                }else{
-                    if (temp.size() >= 3){
-                        matches.add(temp);
+                    if (nextPiece.equals(thirdPiece)){
+                        temp.add(layout[r][c]);
+                        temp.add(layout[r + 1][c]);
+                        temp.add(layout[r + 2][c]);
                     }
-                    temp = new ArrayList<>();
-                    temp.add(layout[r][c]);
                 }
-            }
-            if (temp.size() >= 3){
-                matches.add(temp);
+                if (temp.size() >= 3) {
+                    System.out.println(temp);
+                    matches.add(temp);
+                }
             }
         }
 
@@ -224,8 +219,6 @@ public class Board {
     }
 
     public void refillBoard() {
-
-
         if (game.equals("Candy Crush")){
             for (int r = 0; r < numOfRow; r ++) {
                 for (int c = 0; c < numOfCol; c ++){
